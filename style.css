@@ -1,107 +1,50 @@
-/* Заголовки */
-h1 {
-  font-size: 2rem;
-  color: #333;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: bold;
+
+
+/* Стили для контейнера текста */
+.about-container {
+  border: 2px solid #333;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  animation: fadeIn 1s ease;
 }
 
-/* Стили для навигационного меню */
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+/* Анимация появления */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-nav ul li {
-  display: inline;
+/* Обновленные стили для текста */
+.about-container p {
+  font-size: 1rem;
+  color: #666;
+  font-family: 'Open Sans', sans-serif;
 }
 
-nav ul li a {
-  text-decoration: none;
-  color: #333;
-  margin-right: 10px;
-  font-family: 'Roboto', sans-serif;
-}
-
-/* Стили для разделов */
-section {
-  padding: 50px 0;
-}
-
-section h2 {
+/* Обновленные стили для заголовка */
+.about-container h2 {
   font-size: 1.5rem;
   color: #333;
   font-family: 'Open Sans', sans-serif;
 }
 
-/* Стили для подвала */
-footer {
-  background-color: #f5f5f5;
-  padding: 20px;
-  text-align: center;
-  color: #666;
-  font-family: 'Roboto', sans-serif;
+/* Дополнительные стили для текста и контейнера */
+.about-container .additional-text {
+  font-size: 0.8rem;
+  color: #999;
+  font-style: italic;
 }
 
-/* Общие стили для текста */
-p {
-  font-size: 1rem;
-  color: #666;
-  font-family: 'Open Sans', sans-serif;
+.about-container .additional-text a {
+  color: #999;
+  text-decoration: none;
 }
 
-/* Стили для маркерованных списков */
-ul {
-  list-style-type: disc;
-  margin-left: 20px;
-}
-
-ul li {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1rem;
-  color: #666;
-}
-
-/* Стили для нумерованных списков */
-ol {
-  list-style-type: decimal;
-  margin-left: 20px;
-}
-
-ol li {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1rem;
-  color: #666;
-}
-
-/* Стили для рамки */
-p {
-  border: 2px solid #333;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #f5f5f5;
-  text-align: center;
-  animation: fadeIn 1s ease-in-out;
-}
-
-/* Анимация появления */
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-/* Центрирование текста на странице */
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
-/* Ширина контента */
-main {
-  max-width: 800px;
-  width: 100%;
-  padding: 20px;
+.about-container .additional-text a:hover {
+  text-decoration: underline;
 }
