@@ -1,48 +1,136 @@
-body {
-  font-family: Arial, sans-serif;
+/* Общие стили */
+* {
   margin: 0;
   padding: 0;
-  color: #000;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f8f8f8;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+/* Секции */
+section {
+  padding: 80px 0;
+  position: relative;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-title h2 {
+  color: #333;
+}
+
+.section-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Навигационное меню */
 header {
-  background-color: #f5f5f5;
-  padding: 20px;
+  background-color: #fff;
+  padding: 20px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
 }
 
 nav ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
+  list-style: none;
+  text-align: center;
 }
 
 nav ul li {
-  margin-right: 10px;
+  display: inline-block;
+  margin-right: 20px;
 }
 
 nav ul li a {
   text-decoration: none;
-  color: #000;
-  padding: 5px 10px;
-  border-radius: 5px;
-  transition: background-color 0.3s;
+  color: #333;
+  transition: color 0.3s;
 }
 
 nav ul li a:hover {
-  background-color: #ccc;
+  color: #ff5a5f;
 }
 
-main {
-  padding: 20px;
+/* Анимации и прокрутки */
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.5s;
 }
 
-h2.no-color-change {
-  color: inherit;
+.fade-in.active {
+  opacity: 1;
 }
 
-footer {
-  background-color: #f5f5f5;
-  padding: 20px;
-  text-align: center;
+.scroll-down {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scroll-down-arrow {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: scrollBounce 2s infinite;
+  margin-bottom: 10px;
+}
+
+@keyframes scrollBounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 80px auto 0; /* Обновленное значение: добавлен отступ сверху */
+  padding: 40px;
 }

@@ -1,15 +1,12 @@
 const navLinks = document.querySelectorAll('nav ul li a');
 const body = document.body;
 const header = document.querySelector('header');
-const contactSection = document.getElementById('section4');
-const aboutSection = document.getElementById('section1');
-const sections = document.querySelectorAll('section:not(#section4)');
+const sections = document.querySelectorAll('section');
 const footer = document.querySelector('footer');
-const title = document.querySelector('h1');
-const aboutText = document.getElementById('about-text');
 
 navLinks.forEach(link => {
-  link.addEventListener('click', () => {
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
     const randomColor = getRandomColor();
     body.style.backgroundColor = randomColor;
     setContrastText(randomColor);
@@ -30,9 +27,6 @@ function setContrastText(backgroundColor) {
   const textColor = brightness > 127.5 ? '#000' : '#FFF';
   body.style.color = textColor;
   header.style.color = textColor;
-  contactSection.style.color = textColor;
-  title.style.color = textColor;
-  aboutText.style.color = textColor;
   navLinks.forEach(link => {
     link.style.color = textColor;
   });
@@ -65,3 +59,77 @@ function hexToRgb(hex) {
       }
     : null;
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const sections = document.querySelectorAll('section');
+  const scrollDown = document.querySelector('.scroll-down');
+  const navLinks = document.querySelectorAll('nav ul li a');
+  
+  // Плавная прокрутка к разделу по нажатию на ссылку
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+      smoothScrollTo(targetSection.offsetTop);
+    });
+  });
+
+  // Показать кнопку прокрутки при достижении конца страницы
+  window.addEventListener('scroll', () => {
+    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+    if (scrollTop + clientHeight >= scrollHeight - 20) {
+      scrollDown.classList.add('fade-in');
+    } else {
+      scrollDown.classList.remove('fade-in');
+    }
+  });
+
+  // Плавная прокрутка при нажатии на кнопку прокрутки
+  scrollDown.addEventListener('click', () => {
+    const firstSection = sections[0];
+    smoothScrollTo(firstSection.offsetTop);
+  });
+
+  // Анимация при прокрутке
+  window.addEventListener('scroll', () => {
+    const { scrollTop, clientHeight } = document.documentElement;
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      if (scrollTop + clientHeight > sectionTop) {
+        section.classList.add('fade-in', 'active');
+      } else {
+        section.classList.remove('active');
+      }
+    });
+  });
+
+  // Функция плавной прокрутки
+  function smoothScrollTo(to) {
+    const duration = 1000;
+    const start = window.pageYOffset;
+    const distance = to - start;
+    let startTime = null;
+
+    function scrollAnimation(currentTime) {
+      if (startTime === null) {
+        startTime = currentTime;
+      }
+      const elapsedTime = currentTime - startTime;
+      const scrollY = easeInOutQuad(elapsedTime, start, distance, duration);
+      window.scrollTo(0, scrollY);
+      if (elapsedTime < duration) {
+        requestAnimationFrame(scrollAnimation);
+      }
+    }
+
+    function easeInOutQuad(t, b, c, d) {
+      t /= d / 2;
+      if (t < 1) return c / 2 * t * t + b;
+      t--;
+      return -c / 2 * (t * (t - 2) - 1) + b;
+    }
+
+    requestAnimationFrame(scrollAnimation);
+  }
+});
