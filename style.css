@@ -1,4 +1,9 @@
- /* Заголовки */
+body {
+  color: #000;
+  background-color: #FFF;
+} 
+
+/* Заголовки */
 h1 {
   font-size: 2rem;
   color: #333;
