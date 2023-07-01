@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Камин-шабашка</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .invert-color {
+      filter: invert(100%);
+    }
+  </style>
+  <script src="script.js"></script>
 </head>
 <body>
   <header>
@@ -38,7 +44,7 @@
 
     <section id="section2">
       <!-- Контент раздела "Услуги" -->
-      <h2>Услуги</h2>
+      <h2 class="no-color-change">Услуги</h2>
       <ul>
         <li>Монтаж каминов</li>
         <li>Монтаж отопительных печей</li>
@@ -50,7 +56,7 @@
 
     <section id="section3">
       <!-- Контент раздела "Преимущества" -->
-      <h2>Преимущества</h2>
+      <h2 class="no-color-change">Преимущества</h2>
       <ul>
         <li>Профессиональные мастера с опытом</li>
         <li>Доступные цены</li>
@@ -61,7 +67,7 @@
 
     <section id="section4">
       <!-- Контактная информация -->
-      <h2>Контакты</h2>
+      <h2 class="no-color-change">Контакты</h2>
       <p>Ваш адрес, номер телефона и другая контактная информация.</p>
     </section>
   </main>
@@ -70,7 +76,3 @@
     <!-- Подвал сайта -->
     <p>© 2023 Все права защищены</p>
   </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
