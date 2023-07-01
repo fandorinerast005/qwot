@@ -128,9 +128,3 @@ nav ul li a:hover {
     transform: translateY(0);
   }
 }
-
-.container {
-  max-width: 1200px;
-  margin: 80px auto 0; /* Обновленное значение: добавлен отступ сверху */
-  padding: 40px;
-}
