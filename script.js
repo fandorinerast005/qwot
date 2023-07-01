@@ -21,17 +21,16 @@
     });
   });
 
-  // JavaScript код для изменения цвета фона
+  // JavaScript код для изменения цвета фона и текста
   const navLinks = document.querySelectorAll('nav ul li a');
+  const header = document.querySelector('header');
   const body = document.body;
-  let currentColor = '#333'; // Изначальный цвет текста
 
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
       const randomColor = getRandomColor();
       body.style.backgroundColor = randomColor;
-      body.style.color = getContrastColor(randomColor);
-      currentColor = body.style.color;
+      setContrastText(randomColor);
     });
   });
 
@@ -44,15 +43,46 @@
     return color;
   }
 
-  function getContrastColor(color) {
-    // Простая проверка для определения яркости цвета
-    const brightness = (parseInt(color.substr(1, 2), 16) * 299 +
-      parseInt(color.substr(3, 2), 16) * 587 +
-      parseInt(color.substr(5, 2), 16) * 114) /
-      1000;
-    // Возвращаем белый цвет для темных фонов и чёрный цвет для светлых фонов
-    return brightness > 125 ? '#000' : '#FFF';
+  function setContrastText(color) {
+    const brightness = getBrightness(color);
+    const textColor = brightness > 127.5 ? '#000' : '#FFF';
+    body.style.color = textColor;
+    header.style.color = textColor;
+
+    // Изменяем цвет текста внутри каждой секции, кроме футера и шапки
+    const sections = document.querySelectorAll('section:not(#section4)');
+    sections.forEach(section => {
+      const sectionText = section.querySelectorAll('h2, p, li');
+      sectionText.forEach(text => {
+        text.style.color = textColor;
+      });
+    });
+
+    // Изменяем цвет текста внутри секции "Контакты"
+    const contactSection = document.querySelector('#section4');
+    const contactText = contactSection.querySelectorAll('h2, p');
+    contactText.forEach(text => {
+      text.style.color = textColor;
+    });
   }
 
-  // Установка изначального цвета текста
-  body.style.color = currentColor;
+  function getBrightness(color) {
+    const rgb = hexToRgb(color);
+    const brightness = (rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1000;
+    return brightness;
+  }
+
+  function hexToRgb(hex) {
+    const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+    hex = hex.replace(shorthandRegex, (m, r, g, b) => {
+      return r + r + g + g + b + b;
+    });
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result
+      ? {
+          r: parseInt(result[1], 16),
+          g: parseInt(result[2], 16),
+          b: parseInt(result[3], 16),
+        }
+      : null;
+  }
