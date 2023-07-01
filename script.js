@@ -23,8 +23,10 @@
 
   // JavaScript код для изменения цвета фона и текста
   const navLinks = document.querySelectorAll('nav ul li a');
-  const header = document.querySelector('header');
   const body = document.body;
+  const header = document.querySelector('header');
+  const contactSection = document.getElementById('section4');
+  const sections = document.querySelectorAll('section:not(#section4)');
 
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
@@ -47,23 +49,18 @@
     const brightness = getBrightness(color);
     const textColor = brightness > 127.5 ? '#000' : '#FFF';
     body.style.color = textColor;
-    header.style.color = textColor;
 
-    // Изменяем цвет текста внутри каждой секции, кроме футера и шапки
-    const sections = document.querySelectorAll('section:not(#section4)');
     sections.forEach(section => {
       const sectionText = section.querySelectorAll('h2, p, li');
       sectionText.forEach(text => {
-        text.style.color = textColor;
+        if (!isInsideBox(text) && !isInFooter(text)) {
+          text.style.color = textColor;
+        }
       });
     });
 
-    // Изменяем цвет текста внутри секции "Контакты"
-    const contactSection = document.querySelector('#section4');
-    const contactText = contactSection.querySelectorAll('h2, p');
-    contactText.forEach(text => {
-      text.style.color = textColor;
-    });
+    header.style.color = '#FFF';
+    contactSection.style.color = '#FFF';
   }
 
   function getBrightness(color) {
@@ -85,4 +82,17 @@
           b: parseInt(result[3], 16),
         }
       : null;
+  }
+
+  function isInsideBox(element) {
+    const parent = element.parentElement;
+    if (parent.style.border || parent.style.boxShadow) {
+      return true;
+    }
+    return parent.tagName !== 'BODY' && isInsideBox(parent);
+  }
+
+  function isInFooter(element) {
+    const footer = document.querySelector('footer');
+    return footer.contains(element);
   }
