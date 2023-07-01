@@ -1,32 +1,10 @@
-  // Плавная прокрутка к якорным ссылкам при клике на них
-  document.addEventListener('DOMContentLoaded', function() {
-    var links = document.querySelectorAll('nav ul li a');
-    
-    links.forEach(function(link) {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        var targetId = link.getAttribute('href');
-        var targetElement = document.querySelector(targetId);
-        
-        if (targetElement) {
-          var offsetTop = targetElement.offsetTop;
-          
-          window.scrollTo({
-            top: offsetTop,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-  });
-
   const navLinks = document.querySelectorAll('nav ul li a');
   const body = document.body;
   const header = document.querySelector('header');
   const contactSection = document.getElementById('section4');
   const sections = document.querySelectorAll('section:not(#section4)');
   const footer = document.querySelector('footer');
+  const title = document.querySelector('h1');
 
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
@@ -51,11 +29,17 @@
     body.style.color = textColor;
     header.style.color = textColor;
     contactSection.style.color = textColor;
+    title.style.color = textColor;
+    navLinks.forEach(link => {
+      link.style.color = textColor;
+    });
     sections.forEach(section => {
-      const sectionText = section.querySelectorAll('*:not(.box)');
-      sectionText.forEach(text => {
-        text.style.color = textColor;
-      });
+      if (section !== contactSection) {
+        const sectionText = section.querySelectorAll(':not(h2)');
+        sectionText.forEach(text => {
+          text.style.color = textColor;
+        });
+      }
     });
     footer.style.color = textColor;
   }
