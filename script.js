@@ -21,12 +21,12 @@
     });
   });
 
-  // JavaScript код для изменения цвета фона и текста
   const navLinks = document.querySelectorAll('nav ul li a');
   const body = document.body;
   const header = document.querySelector('header');
   const contactSection = document.getElementById('section4');
   const sections = document.querySelectorAll('section:not(#section4)');
+  const footer = document.querySelector('footer');
 
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
@@ -45,22 +45,19 @@
     return color;
   }
 
-  function setContrastText(color) {
-    const brightness = getBrightness(color);
+  function setContrastText(backgroundColor) {
+    const brightness = getBrightness(backgroundColor);
     const textColor = brightness > 127.5 ? '#000' : '#FFF';
     body.style.color = textColor;
-
+    header.style.color = textColor;
+    contactSection.style.color = textColor;
     sections.forEach(section => {
-      const sectionText = section.querySelectorAll('h2, p, li');
+      const sectionText = section.querySelectorAll('*:not(.box)');
       sectionText.forEach(text => {
-        if (!isInsideBox(text) && !isInFooter(text)) {
-          text.style.color = textColor;
-        }
+        text.style.color = textColor;
       });
     });
-
-    header.style.color = '#FFF';
-    contactSection.style.color = '#FFF';
+    footer.style.color = textColor;
   }
 
   function getBrightness(color) {
@@ -82,17 +79,4 @@
           b: parseInt(result[3], 16),
         }
       : null;
-  }
-
-  function isInsideBox(element) {
-    const parent = element.parentElement;
-    if (parent.style.border || parent.style.boxShadow) {
-      return true;
-    }
-    return parent.tagName !== 'BODY' && isInsideBox(parent);
-  }
-
-  function isInFooter(element) {
-    const footer = document.querySelector('footer');
-    return footer.contains(element);
   }
