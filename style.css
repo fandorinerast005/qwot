@@ -1,132 +1,48 @@
-/* Заголовки */
-h1 {
-  font-size: 2rem;
-  color: #333;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: bold;
-}
-
-/* Стили для навигационного меню */
-nav ul {
-  list-style-type: none;
+body {
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  color: #000;
+}
+
+header {
+  background-color: #f5f5f5;
+  padding: 20px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
 }
 
 nav ul li {
-  display: inline;
+  margin-right: 10px;
 }
 
 nav ul li a {
   text-decoration: none;
-  color: #333;
-  margin-right: 10px;
-  font-family: 'Roboto', sans-serif;
+  color: #000;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
 }
 
-/* Стили для разделов */
-section {
-  padding: 50px 0;
+nav ul li a:hover {
+  background-color: #ccc;
 }
 
-section h2 {
-  font-size: 1.5rem;
-  color: #333;
-  font-family: 'Open Sans', sans-serif;
+main {
+  padding: 20px;
 }
 
-/* Стили для подвала */
+h2.no-color-change {
+  color: inherit;
+}
+
 footer {
   background-color: #f5f5f5;
   padding: 20px;
   text-align: center;
-  color: #666;
-  font-family: 'Roboto', sans-serif;
-}
-
-/* Общие стили для текста */
-p {
-  font-size: 1rem;
-  color: #666;
-  font-family: 'Open Sans', sans-serif;
-}
-
-/* Стили для маркерованных списков */
-ul {
-  list-style-type: disc;
-  margin-left: 20px;
-}
-
-ul li {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1rem;
-  color: #666;
-}
-
-/* Стили для нумерованных списков */
-ol {
-  list-style-type: decimal;
-  margin-left: 20px;
-}
-
-ol li {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1rem;
-  color: #666;
-}
-
-/* Стили для контейнера текста */
-.about-container {
-  border: 2px solid #333;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #f5f5f5;
-  animation: fadeIn 1s ease;
-}
-
-/* Анимация появления */
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-/* Обновленные стили для текста */
-.about-container p {
-  font-size: 1rem;
-  color: #666;
-  font-family: 'Open Sans', sans-serif;
-}
-
-/* Обновленные стили для заголовка */
-.about-container h2 {
-  font-size: 1.5rem;
-  color: #333;
-  font-family: 'Open Sans', sans-serif;
-}
-
-/* Дополнительные стили для текста и контейнера */
-.about-container .additional-text {
-  font-size: 0.8rem;
-  color: #999;
-  font-style: italic;
-}
-
-.about-container .additional-text a {
-  color: #999;
-  text-decoration: none;
-}
-
-.about-container .additional-text a:hover {
-  text-decoration: underline;
-}
-
-@media (max-width: 600px) {
-  p {
-    font-size: 16px; /* Уменьшаем размер текста для мобильных экранов */
-    padding: 10px; /* Уменьшаем отступы внутри рамки для мобильных экранов */
-  }
 }
