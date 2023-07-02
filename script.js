@@ -1,6 +1,8 @@
-  // JavaScript код для изменения цвета фона и текста
+ // JavaScript код для изменения цвета фона и текста
   const navLinks = document.querySelectorAll('nav ul li a');
   const body = document.body;
+  const header = document.querySelector('header');
+  const contactSection = document.getElementById('section4');
 
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
@@ -23,14 +25,18 @@
     const brightness = getBrightness(color);
     const textColor = brightness > 127.5 ? '#000' : '#FFF';
     body.style.color = textColor;
+    header.style.color = textColor;
+    contactSection.style.color = textColor;
 
-    // Изменяем цвет текста внутри каждой секции, кроме футера
+    // Изменяем цвет текста внутри каждой секции, кроме футера и текста в рамке
     const sections = document.querySelectorAll('section:not(#section4)');
     sections.forEach(section => {
-      const sectionText = section.querySelectorAll('h2, p, li');
-      sectionText.forEach(text => {
-        text.style.color = textColor;
-      });
+      if (!section.classList.contains('about-container')) {
+        const sectionText = section.querySelectorAll('h2, p, li');
+        sectionText.forEach(text => {
+          text.style.color = textColor;
+        });
+      }
     });
   }
 
