@@ -1,29 +1,41 @@
-// JavaScript код для изменения цвета фона и текста
-const navLinks = document.querySelectorAll('nav ul li a');
+const scrollButton = document.querySelector(".scroll-to-top");
+const navLinks = document.querySelectorAll("nav ul li a");
 const body = document.body;
-const sections = document.querySelectorAll('section:not(.header-section)');
-const title = document.querySelector('header h1');
+const sections = document.querySelectorAll("section:not(.header-section)");
+const title = document.querySelector("header h1");
 
-// Добавляем обработчик клика для ссылок навигационного меню
+window.addEventListener("scroll", () => {
+  if (window.pageYOffset > 200) {
+    scrollButton.classList.add("show");
+  } else {
+    scrollButton.classList.remove("show");
+  }
+});
+
+scrollButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+});
+
 navLinks.forEach((link) => {
-  link.addEventListener('click', (event) => {
-    event.preventDefault(); // Отменяем стандартное поведение ссылки
-
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
     const randomColor = getRandomColor();
     body.style.backgroundColor = randomColor;
     setContrastText(randomColor);
-
-    // Прокручиваем к якорю
-    const href = link.getAttribute('href');
+    const href = link.getAttribute("href");
     document.querySelector(href).scrollIntoView({
-      behavior: 'smooth'
+      behavior: "smooth",
     });
   });
 });
 
 function getRandomColor() {
-  const letters = '0123456789ABCDEF';
-  let color = '#';
+  const letters = "0123456789ABCDEF";
+  let color = "#";
   for (let i = 0; i < 6; i++) {
     color += letters[Math.floor(Math.random() * 16)];
   }
@@ -32,12 +44,12 @@ function getRandomColor() {
 
 function setContrastText(color) {
   const brightness = getBrightness(color);
-  const textColor = brightness > 127.5 ? '#000' : '#FFF';
+  const textColor = brightness > 127.5 ? "#000" : "#FFF";
   body.style.color = textColor;
-  title.style.color = '#000'; // Устанавливаем черный цвет для заголовка
+  title.style.color = "#000";
 
   sections.forEach((section) => {
-    const sectionText = section.querySelectorAll('h2, p, li');
+    const sectionText = section.querySelectorAll("h2, p, li");
     sectionText.forEach((text) => {
       text.style.color = textColor;
     });
