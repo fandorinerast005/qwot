@@ -1,14 +1,11 @@
-// script.js
-
 // JavaScript код для изменения цвета фона и текста
 const navLinks = document.querySelectorAll('nav ul li a');
 const body = document.body;
-const header = document.querySelector('header');
-const contactSection = document.getElementById('section4');
+const sections = document.querySelectorAll('section:not(.header-section)');
+const title = document.querySelector('header h1');
 
 navLinks.forEach((link) => {
-  link.addEventListener('click', (event) => {
-    event.preventDefault(); // Отменить действие перехода по ссылке
+  link.addEventListener('click', () => {
     const randomColor = getRandomColor();
     body.style.backgroundColor = randomColor;
     setContrastText(randomColor);
@@ -28,8 +25,14 @@ function setContrastText(color) {
   const brightness = getBrightness(color);
   const textColor = brightness > 127.5 ? '#000' : '#FFF';
   body.style.color = textColor;
-  header.style.color = textColor;
-  contactSection.style.color = textColor;
+  title.style.color = '#000'; // Устанавливаем черный цвет для заголовка
+
+  sections.forEach((section) => {
+    const sectionText = section.querySelectorAll('h2, p, li');
+    sectionText.forEach((text) => {
+      text.style.color = textColor;
+    });
+  });
 }
 
 function getBrightness(color) {
