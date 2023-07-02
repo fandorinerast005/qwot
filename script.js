@@ -14,6 +14,9 @@ window.addEventListener("scroll", () => {
 
 scrollButton.addEventListener("click", (event) => {
   event.preventDefault();
+  const randomColor = getRandomColor();
+  body.style.backgroundColor = randomColor;
+  setContrastText(randomColor);
   window.scrollTo({
     top: 0,
     behavior: "smooth",
@@ -40,41 +43,6 @@ function getRandomColor() {
     color += letters[Math.floor(Math.random() * 16)];
   }
   return color;
-}
-
-function setContrastText(color) {
-  const brightness = getBrightness(color);
-  const textColor = brightness > 127.5 ? "#000" : "#FFF";
-  body.style.color = textColor;
-  title.style.color = "#000";
-
-  sections.forEach((section) => {
-    const sectionText = section.querySelectorAll("h2, p, li");
-    sectionText.forEach((text) => {
-      text.style.color = textColor;
-    });
-  });
-}
-
-function getBrightness(color) {
-  const rgb = hexToRgb(color);
-  const brightness = (rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1000;
-  return brightness;
-}
-
-function hexToRgb(hex) {
-  const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-  hex = hex.replace(shorthandRegex, (m, r, g, b) => {
-    return r + r + g + g + b + b;
-  });
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return result
-    ? {
-        r: parseInt(result[1], 16),
-        g: parseInt(result[2], 16),
-        b: parseInt(result[3], 16),
-      }
-    : null;
 }
 
 const text =
@@ -104,3 +72,52 @@ function typeWriter() {
 }
 
 setInterval(typeWriter, 100);
+
+const nextButtons = document.querySelectorAll('.next-button');
+nextButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const targetId = button.getAttribute('data-target');
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      const randomColor = getRandomColor();
+      body.style.backgroundColor = randomColor;
+      setContrastText(randomColor);
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+function setContrastText(color) {
+  const brightness = getBrightness(color);
+  const textColor = brightness > 0.5 ? "#000" : "#FFF";
+  body.style.color = textColor;
+
+  const sectionHeadings = document.querySelectorAll("section:not(.header-section) h2");
+  sectionHeadings.forEach((heading) => {
+    if (heading.textContent !== "Камин-шабашка") {
+      heading.style.color = textColor;
+      heading.style.textShadow = `0 0 5px ${textColor}`;
+    }
+  });
+}
+
+function getBrightness(color) {
+  const rgb = hexToRgb(color);
+  const brightness = (rgb.r * 0.299 + rgb.g * 0.587 + rgb.b * 0.114) / 255;
+  return brightness;
+}
+
+function hexToRgb(hex) {
+  const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+  hex = hex.replace(shorthandRegex, (m, r, g, b) => {
+    return r + r + g + g + b + b;
+  });
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result
+    ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16),
+      }
+    : null;
+}
