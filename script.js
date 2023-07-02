@@ -29,7 +29,7 @@
     contactSection.style.color = textColor;
 
     // Изменяем цвет текста внутри каждой секции, кроме футера и текста в рамке
-    const sections = document.querySelectorAll('section:not(#section4)');
+    const sections = document.querySelectorAll;
     sections.forEach(section => {
       if (!section.classList.contains('about-container')) {
         const sectionText = section.querySelectorAll('h2, p, li');

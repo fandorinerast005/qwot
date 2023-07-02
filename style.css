@@ -1,46 +1,115 @@
+  header {
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+  }
 
- h1 {
-  font-size: 24px;
-  color: #333;
-}
+  h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
 
-/* Стили для навигационного меню */
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
 
-nav ul li {
-  display: inline;
-}
+  nav ul li {
+    margin: 0 10px;
+  }
 
-nav ul li a {
-  text-decoration: none;
-  color: #333;
-  margin-right: 10px;
-}
+  nav ul li a {
+    text-decoration: none;
+    font-weight: bold;
+  }
 
-/* Стили для разделов */
-section {
-  padding: 50px 0;
-}
+  /* Стили для раздела "О нас" */
+  #section1 {
+    padding: 50px;
+  }
 
-section h2 {
-  font-size: 20px;
-  color: #333;
-}
+  .about-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
 
-/* Стили для подвала */
-footer {
-  background-color: #f5f5f5;
-  padding: 20px;
-  text-align: center;
-  color: #666;
-}
+  h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
 
-/* Общие стили для текста */
-p {
-  font-size: 16px;
-  color: #666;
-}
+  p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  /* Стили для раздела "Услуги" */
+  #section2 {
+    padding: 50px;
+  }
+
+  #section2 h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  #section2 ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  #section2 ul li {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  /* Стили для раздела "Преимущества" */
+  #section3 {
+    padding: 50px;
+  }
+
+  #section3 h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  #section3 ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  #section3 ul li {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  /* Стили для раздела "Контакты" */
+  #section4 {
+    padding: 50px;
+  }
+
+  #section4 h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  #section4 p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  /* Стили для подвала сайта */
+  footer {
+    padding: 20px;
+    text-align: center;
+  }
+
+  footer p {
+    margin: 0;
+  }
