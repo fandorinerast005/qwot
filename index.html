@@ -1,128 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Камин-шабашка</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap">
-  <link rel="stylesheet" href="style.css">
-  <style>
-    /* Стили кнопки для прокрутки вверх */
-    .scroll-to-top {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 40px;
-      height: 40px;
-      background-color: #333;
-      color: #fff;
-      border-radius: 50%;
-      text-align: center;
-      line-height: 40px;
-      cursor: pointer;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s, visibility 0.3s;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Камин-шабашка</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <!-- Заголовок и навигационное меню -->
+      <h1>Камин-шабашка</h1>
+      <nav>
+        <ul>
+          <li><a href="#section1">О нас</a></li>
+          <li><a href="#section2">Услуги</a></li>
+          <li><a href="#section3">Преимущества</a></li>
+          <li><a href="#section4">Контакты</a></li>
+        </ul>
+      </nav>
+    </header>
 
-    .scroll-to-top.show {
-      opacity: 1;
-      visibility: visible;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <!-- Заголовок и навигационное меню -->
-    <h1>Камин-шабашка</h1>
-    <nav>
-      <ul>
-        <li><a href="#section1">О нас</a></li>
-        <li><a href="#section2">Услуги</a></li>
-        <li><a href="#section3">Преимущества</a></li>
-        <li><a href="#section4">Контакты</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <section id="section1">
-      <!-- Контент раздела "О нас" -->
-      <div class="about-container">
-        <h2>О нас</h2>
-        <p>
-          Наша компания специализируется на оказании разовых услуг по
-          установке печей и каминов. Мы гордимся нашей командой
-          профессиональных мастеров, которые обладают большим опытом и
-          навыками в этой области. Наша команда состоит преимущественно из
-          мастеров, которые проявляют высокую мотивацию и
-          преданность своей работе.
-        </p>
-        <div class="photo-container">
-          <img class="modern-photo" src="https://cdn.glitch.global/1c9d4d39-b248-4b4d-9d71-42e9f7bbebe5/57.jpeg?v=1688294004258" alt="Фото 1">
-          <img class="modern-photo" src="https://cdn.glitch.global/1c9d4d39-b248-4b4d-9d71-42e9f7bbebe5/58.jpeg?v=1688294014697" alt="Фото 2">
+    <main>
+      <section id="section1" class="animate-section">
+        <!-- Контент раздела "О нас" -->
+        <div class="about-container">
+          <h2>О нас</h2>
+          <p>
+            Наша компания специализируется на оказании разовых услуг по
+            установке печей и каминов. Мы гордимся нашей командой
+            профессиональных мастеров, которые обладают большим опытом и
+            навыками в этой области. Наша команда состоит преимущественно из
+            мастеров, которые проявляют высокую мотивацию и преданность своей
+            работе.
+          </p>
+          <div class="photo-container">
+            <img
+              class="modern-photo"
+              src="https://cdn.glitch.global/1c9d4d39-b248-4b4d-9d71-42e9f7bbebe5/57.jpeg?v=1688294004258"
+              alt="Фото 1"
+            />
+            <img
+              class="modern-photo"
+              src="https://cdn.glitch.global/1c9d4d39-b248-4b4d-9d71-42e9f7bbebe5/58.jpeg?v=1688294014697"
+              alt="Фото 2"
+            />
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="section2">
-      <!-- Контент раздела "Услуги" -->
-      <h2>Услуги</h2>
-      <ul>
-        <li>Монтаж каминов</li>
-        <li>Монтаж отопительных печей</li>
-        <li>Монтаж отопительных котлов</li>
-        <li>Монтаж банных печей</li>
-        <li>Отделка бань и саун</li>
-      </ul>
-    </section>
+      <section id="section2" class="animate-section">
+        <!-- Контент раздела "Услуги" -->
+        <h2>Услуги</h2>
+        <ul>
+          <li>Монтаж каминов</li>
+          <li>Монтаж отопительных печей</li>
+          <li>Монтаж отопительных котлов</li>
+          <li>Монтаж банных печей</li>
+          <li>Отделка бань и саун</li>
+        </ul>
+      </section>
 
-    <section id="section3">
-      <!-- Контент раздела "Преимущества" -->
-      <h2>Преимущества</h2>
-      <ul>
-        <li>Профессиональные мастера с опытом</li>
-        <li>Доступные цены</li>
-        <li>Высокое качество работы</li>
-        <li>Пунктуальность и надежность</li>
-      </ul>
-    </section>
+      <section id="section3" class="animate-section">
+        <!-- Контент раздела "Преимущества" -->
+        <h2>Преимущества</h2>
+        <ul>
+          <li>Профессиональные мастера с опытом</li>
+          <li>Доступные цены</li>
+          <li>Высокое качество работы</li>
+          <li>Пунктуальность и надежность</li>
+        </ul>
+      </section>
 
-    <section id="section4">
-      <!-- Контактная информация -->
-      <h2>Контакты</h2>
-      <p>Ваш адрес, номер телефона и другая контактная информация.</p>
-    </section>
-  </main>
+      <section id="section4" class="animate-section">
+        <!-- Контактная информация -->
+        <h2>Контакты</h2>
+        <p>Ваш адрес, номер телефона и другая контактная информация.</p>
+      </section>
+    </main>
 
-  <footer>
-    <!-- Подвал сайта -->
-    <p>© 2023 Все права защищены</p>
-  </footer>
+    <footer>
+      <!-- Подвал сайта -->
+      <p>© 2023 Все права защищены</p>
+    </footer>
 
+    <div class="scroll-to-top">&#8593;</div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
   <div class="scroll-to-top">&#8593;</div>
 
   <script src="script.js"></script>
-  <script>
-    // JavaScript код для отображения кнопки прокрутки вверх
-    const scrollButton = document.querySelector('.scroll-to-top');
-
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 200) {
-        scrollButton.classList.add('show');
-      } else {
-        scrollButton.classList.remove('show');
-      }
-    });
-
-    scrollButton.addEventListener('click', (event) => {
-      event.preventDefault(); // Отменяем стандартное поведение ссылки
-
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-  </script>
 </body>
 </html>
+
