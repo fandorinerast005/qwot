@@ -76,3 +76,31 @@ function hexToRgb(hex) {
       }
     : null;
 }
+
+const text =
+  "Мы работаем по всей Тульской области, возможен выезд в другие регионы!...";
+const typingText = document.getElementById("typing-text");
+let charIndex = 0;
+let isDeleting = false;
+
+function typeWriter() {
+  const currentText = isDeleting
+    ? text.substring(0, charIndex - 1)
+    : text.substring(0, charIndex + 1);
+  typingText.textContent = currentText;
+
+  if (!isDeleting) {
+    charIndex++;
+    if (charIndex > text.length) {
+      isDeleting = true;
+      charIndex = text.length;
+    }
+  } else {
+    charIndex--;
+    if (charIndex === 0) {
+      isDeleting = false;
+    }
+  }
+}
+
+setInterval(typeWriter, 100);
