@@ -1,115 +1,77 @@
-  header {
-    background-color: #f1f1f1;
-    padding: 20px;
-    text-align: center;
-  }
+  /* style.css */
 
-  h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
+/* Стили для основного контейнера */
+body {
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f1f1f1;
+  color: #333;
+}
 
-  nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-  }
+/* Стили для заголовка и навигационного меню */
+header {
+  background-color: #f1f1f1;
+  padding: 20px;
+  text-align: center;
+}
 
-  nav ul li {
-    margin: 0 10px;
-  }
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
 
-  nav ul li a {
-    text-decoration: none;
-    font-weight: bold;
-  }
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
 
-  /* Стили для раздела "О нас" */
-  #section1 {
-    padding: 50px;
-  }
+nav ul li {
+  margin: 0 10px;
+}
 
-  .about-container {
-    max-width: 800px;
-    margin: 0 auto;
-  }
+nav ul li a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #333;
+  transition: color 0.3s ease;
+}
 
-  h2 {
-    color: #333;
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
+nav ul li a:hover {
+  color: #ff4500;
+}
 
-  p {
-    font-size: 16px;
-    line-height: 1.5;
-  }
+/* Стили для контента разделов */
+section {
+  padding: 50px;
+}
 
-  /* Стили для раздела "Услуги" */
-  #section2 {
-    padding: 50px;
-  }
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
 
-  #section2 h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
+p,
+ul {
+  font-size: 16px;
+  line-height: 1.5;
+}
 
-  #section2 ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
 
-  #section2 ul li {
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
+li {
+  margin-bottom: 10px;
+}
 
-  /* Стили для раздела "Преимущества" */
-  #section3 {
-    padding: 50px;
-  }
-
-  #section3 h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-
-  #section3 ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  #section3 ul li {
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-
-  /* Стили для раздела "Контакты" */
-  #section4 {
-    padding: 50px;
-  }
-
-  #section4 h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-
-  #section4 p {
-    font-size: 16px;
-    line-height: 1.5;
-  }
-
-  /* Стили для подвала сайта */
-  footer {
-    padding: 20px;
-    text-align: center;
-  }
-
-  footer p {
-    margin: 0;
-  }
+/* Стили для подвала сайта */
+footer {
+  padding: 20px;
+  text-align: center;
+}
