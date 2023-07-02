@@ -98,3 +98,35 @@ footer {
     margin-bottom: 2rem;
   }
 }
+
+.modern-photo {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.photo-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.modern-photo {
+  max-width: 100%;
+  height: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .modern-photo {
+    max-width: 50%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .modern-photo {
+    max-width: 33.33%;
+  }
+}

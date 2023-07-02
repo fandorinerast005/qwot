@@ -4,11 +4,20 @@ const body = document.body;
 const sections = document.querySelectorAll('section:not(.header-section)');
 const title = document.querySelector('header h1');
 
+// Добавляем обработчик клика для ссылок навигационного меню
 navLinks.forEach((link) => {
-  link.addEventListener('click', () => {
+  link.addEventListener('click', (event) => {
+    event.preventDefault(); // Отменяем стандартное поведение ссылки
+
     const randomColor = getRandomColor();
     body.style.backgroundColor = randomColor;
     setContrastText(randomColor);
+
+    // Прокручиваем к якорю
+    const href = link.getAttribute('href');
+    document.querySelector(href).scrollIntoView({
+      behavior: 'smooth'
+    });
   });
 });
 
