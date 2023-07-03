@@ -153,24 +153,6 @@ footer {
   visibility: visible;
 }
 
-/* Анимация секций */
-.animate-section {
-  opacity: 0;
-  transform: translateX(-50px) rotate(-5deg);
-  animation: fadeInUp 0.8s ease forwards;
-}
-
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateX(-50px) rotate(-5deg);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0) rotate(0);
-  }
-}
-
 #typing-text {
       font-family: monospace;
       font-size: 20px;
@@ -218,37 +200,53 @@ main {
   text-align: center;
 }
 
-/* Добавьте классы для анимации секций */
-.animate-section.from-left {
+section {
+  position: relative;
+  overflow: hidden;
   opacity: 0;
-  transform: translateX(-50px);
-  animation: slideInRight 0.8s ease forwards;
 }
 
-.animate-section.from-right {
-  opacity: 0;
-  transform: translateX(50px);
-  animation: slideInLeft 0.8s ease forwards;
+.section-anim {
+  animation: animSlideIn 1s forwards;
 }
 
-@keyframes slideInRight {
+@keyframes animSlideIn {
   0% {
+    transform: translateX(-100%);
     opacity: 0;
-    transform: translateX(-50px);
   }
   100% {
-    opacity: 1;
     transform: translateX(0);
+    opacity: 1;
   }
 }
 
-@keyframes slideInLeft {
+.from-right {
+  animation: animSlideInFromRight 1s forwards;
+}
+
+.from-left {
+  animation: animSlideInFromLeft 1s forwards;
+}
+
+@keyframes animSlideInFromRight {
   0% {
+    transform: translateX(100%);
     opacity: 0;
-    transform: translateX(50px);
   }
   100% {
-    opacity: 1;
     transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes animSlideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
