@@ -89,16 +89,16 @@ nextButtons.forEach((button) => {
 
 function set3DText(color) {
   const sectionHeadings = document.querySelectorAll("section:not(.header-section) h2");
+  const bodyColor = getContrastColor(color); // Получение цвета контрастного фона
+
   sectionHeadings.forEach((heading) => {
     if (heading.textContent !== "Камин-шабашка") {
-      const randomColor = getRandomColor();
-      heading.style.textShadow = `2px 2px 4px rgba(0, 0, 0, 0.4), 2px 2px 6px ${randomColor}`;
-      heading.style.color = randomColor;
+      heading.style.textShadow = `2px 2px 4px rgba(0, 0, 0, 0.4), 2px 2px 6px ${color}`;
+      heading.style.color = bodyColor; // Использование цвета контрастного фона
     }
   });
 
-  const bodyColor = getContrastColor(color);
-  body.style.color = bodyColor;
+  body.style.color = bodyColor; // Изменение цвета текста в основном содержимом страницы
 }
 
 function getContrastColor(color) {
