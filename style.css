@@ -11,7 +11,7 @@ body {
 
 /* Стили для заголовка и навигационного меню */
 header {
-  background-color: #ff9500;
+  background-color: #9370DB;
   padding: 20px;
   text-align: center;
 }
@@ -216,4 +216,39 @@ main {
   justify-content: center;
   min-height: 100vh;
   text-align: center;
+}
+
+/* Добавьте классы для анимации секций */
+.animate-section.from-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: slideInRight 0.8s ease forwards;
+}
+
+.animate-section.from-right {
+  opacity: 0;
+  transform: translateX(50px);
+  animation: slideInLeft 0.8s ease forwards;
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
