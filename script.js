@@ -16,7 +16,7 @@ scrollButton.addEventListener("click", (event) => {
   event.preventDefault();
   const randomColor = getRandomColor();
   body.style.backgroundColor = randomColor;
-  setContrastText(randomColor);
+  set3DText(randomColor);
   window.scrollTo({
     top: 0,
     behavior: "smooth",
@@ -28,7 +28,7 @@ navLinks.forEach((link) => {
     event.preventDefault();
     const randomColor = getRandomColor();
     body.style.backgroundColor = randomColor;
-    setContrastText(randomColor);
+    set3DText(randomColor);
     const href = link.getAttribute("href");
     document.querySelector(href).scrollIntoView({
       behavior: "smooth",
@@ -81,30 +81,30 @@ nextButtons.forEach((button) => {
     if (targetElement) {
       const randomColor = getRandomColor();
       body.style.backgroundColor = randomColor;
-      setContrastText(randomColor);
+      set3DText(randomColor);
       targetElement.scrollIntoView({ behavior: 'smooth' });
     }
   });
 });
 
-function setContrastText(color) {
-  const brightness = getBrightness(color);
-  const textColor = brightness > 0.5 ? "#000" : "#FFF";
-  body.style.color = textColor;
-
+function set3DText(color) {
   const sectionHeadings = document.querySelectorAll("section:not(.header-section) h2");
   sectionHeadings.forEach((heading) => {
     if (heading.textContent !== "Камин-шабашка") {
-      heading.style.color = textColor;
-      heading.style.textShadow = `0 0 5px ${textColor}`;
+      const randomColor = getRandomColor();
+      heading.style.textShadow = `2px 2px 4px rgba(0, 0, 0, 0.4), 2px 2px 6px ${randomColor}`;
+      heading.style.color = randomColor;
     }
   });
+
+  const bodyColor = getContrastColor(color);
+  body.style.color = bodyColor;
 }
 
-function getBrightness(color) {
+function getContrastColor(color) {
   const rgb = hexToRgb(color);
-  const brightness = (rgb.r * 0.299 + rgb.g * 0.587 + rgb.b * 0.114) / 255;
-  return brightness;
+  const brightness = (rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1000;
+  return brightness >= 128 ? "#000" : "#FFF";
 }
 
 function hexToRgb(hex) {
@@ -121,3 +121,25 @@ function hexToRgb(hex) {
       }
     : null;
 }
+
+window.addEventListener("scroll", () => {
+  const windowHeight = window.innerHeight;
+  const scrollPosition = window.pageYOffset;
+
+  sections.forEach((section, index) => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.offsetHeight;
+
+    if (scrollPosition >= sectionTop - windowHeight + sectionHeight * 0.5) {
+      section.classList.add(index % 2 === 0 ? "from-right" : "from-left");
+    } else {
+      section.classList.remove("from-right", "from-left");
+    }
+  });
+
+  if (window.pageYOffset > 200) {
+    scrollButton.classList.add("show");
+  } else {
+    scrollButton.classList.remove("show");
+  }
+});
